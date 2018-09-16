@@ -6,7 +6,7 @@ namespace Slide01
         /// <summary>
         /// Expr1.
         /// Swap 2 variables without using the third one
-        /// </summaryg
+        /// </summary>
         static void Main()
         {
             int a = Convert.ToInt32(Console.ReadLine());
