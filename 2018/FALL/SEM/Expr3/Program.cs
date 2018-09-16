@@ -2,7 +2,7 @@
 namespace Slide01
 {
     /// <summary>
-    /// 
+    /// Finding the degrees between hours
     /// </summary>
     class Program
     {
