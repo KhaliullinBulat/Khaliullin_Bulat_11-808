@@ -1,40 +1,37 @@
-﻿
-/*
-namespace Mazes
+﻿using System;
+using System.Linq;
+
+namespace Names
 {
-    public static class EmptyMazeTask
+    internal static class HistogramTask
     {
-        public static void MoveDownOrRight(Robot robot, int endPosition)
+        public static HistogramData GetFirstLettersPerNameHeatmap(NameData[] names)
         {
-            endPosition -= 2; // because there is also two walls in the top and the down sides
-            for (int beginPosition = 1; beginPosition < endPosition; beginPosition++)
+            var minYear = int.MinValue;
+            var maxYear = int.MaxValue;
+
+            foreach (var item in names)
             {
-                if ()
-                robot.MoveTo(Direction.Down);
-                if ()
-                robot.MoveTo(Direction.Right);
+                minYear = (minYear > item.BirthDate.Year) ? item.BirthDate.Year : minYear;
+                maxYear = (maxYear > item.BirthDate.Year) ? item.BirthDate.Year : maxYear;
             }
-        }
 
-        public static void MoveDown(Robot robot, int heightEnd)
-        {
-            heightEnd = heightEnd - 2; // because there is also two walls in the top and the down sides
-            for (int heightBegin = 1; heightBegin < heightEnd; heightBegin++)
-                robot.MoveTo(Direction.Down);
-        }
+            string alphabet = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
+            var letters = new char[33];
+            for (int i = 0; i < 33; i++)
+                cahr[i] = alphabet[i];
 
-        public static void MoveRight(Robot robot, int widthEnd)
-        {
-            widthEnd = widthEnd - 2; // because there is also two walls in the left and the right sides
-            for (int widthBegin = 1; widthBegin < widthEnd; widthBegin++)
-                robot.MoveTo(Direction.Right);
-        }
+            var years = new string[maxYear - minYear + 1];
+            for (int i = 0; i < years.Length; i++)
+                years[i] = Convert.ToString(i + minYear);
 
-        public static void MoveOut(Robot robot, int width, int height)
-        {
-            MoveRight(robot, width);
-            MoveDown(robot, height);
+            var table = new double[33,maxYear - minYear + 1];
+            foreach (var item in names)
+                foreach (var elem in letters)
+                    if (item.Name[0] == elem)
+                        table[letters - 1, item.BirthDate.Year - 1]++;
+
+            return new HeatmapData("Amount of people with a same first letter have burned in one year", table, (string)alphabet, years);
         }
     }
 }
-*/
