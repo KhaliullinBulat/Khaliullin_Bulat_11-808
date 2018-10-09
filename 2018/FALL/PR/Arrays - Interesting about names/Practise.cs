@@ -3,9 +3,9 @@ using System.Linq;
 
 namespace Names
 {
-    internal static class HistogramTask
+    internal static class HeatmapTask
     {
-        public static HistogramData GetFirstLettersPerNameHeatmap(NameData[] names)
+        public static HeatmapData GetFirstLettersPerNameHeatmap(NameData[] names)
         {
             var minYear = int.MinValue;
             var maxYear = int.MaxValue;
